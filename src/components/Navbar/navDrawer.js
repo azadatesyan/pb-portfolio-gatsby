@@ -1,8 +1,8 @@
 import React from 'react';
 
+import { Link, StaticQuery, graphql } from 'gatsby';
+
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
 const NavDrawer = ({ open }) => {
   return (
@@ -10,13 +10,35 @@ const NavDrawer = ({ open }) => {
       <Container>
         <div className="left">
           <ul>
-            <li>Projects</li>
-            <li>About</li>
-            <li>Contact</li>
+            <StaticQuery
+              query={graphql`
+                query {
+                  allStrapiLink {
+                    edges {
+                      node {
+                        id
+                        name
+                        path
+                      }
+                    }
+                  }
+                }
+              `}
+              render={(data) =>
+                data.allStrapiLink.edges.map((link) => {
+                  return (
+                    <li key={link.node.id}>
+                      <Link to={link.node.path}>{link.node.name}</Link>
+                    </li>
+                  );
+                })
+              }
+            />
           </ul>
         </div>
         <div className="right">
           <img
+            alt="Graphic Design Artwork"
             className="img-resp"
             src="https://images.unsplash.com/photo-1541580621-39f717ce77cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
           />

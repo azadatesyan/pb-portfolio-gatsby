@@ -20,7 +20,7 @@ const MainSection = () => {
         </Col>
         <Col sm={6} style={{ display: 'flex' }}>
           <div className="center-vertically">
-            <h2>
+            <h2 className="intro-text">
               {"Hi, I'm "}
               <ColorSpan text="Patrycja Beblo" highlightColor="yellow" />
               <br />

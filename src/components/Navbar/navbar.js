@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
+
 import Container from 'react-bootstrap/Container';
 
-const Navbar = ({ open, handleOpen }) => {
+const Navbar = ({ open, setOpen }) => {
   return (
     <div className="navbar-container">
       <Container>
@@ -11,8 +12,11 @@ const Navbar = ({ open, handleOpen }) => {
             <span>Beblo</span>
           </div>
           <div
+            onKeyUp={(e) => e.key === 'Enter' && setOpen(!open)}
+            tabIndex="0"
+            role="button"
             className={`menu-btn ${open ? 'open' : ''}`}
-            onClick={() => handleOpen(!open)}>
+            onClick={() => setOpen(!open)}>
             <div className="menu-btn-burger"></div>
           </div>
         </nav>

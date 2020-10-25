@@ -1,5 +1,6 @@
 import React from 'react';
 // import { Link } from "gatsby"
+import { graphql, StaticQuery } from 'gatsby';
 
 import Container from 'react-bootstrap/esm/Container';
 import Project from '../components/project';
@@ -16,7 +17,45 @@ const IndexPage = () => (
     <SEO title="Home" />
     <MainSection />
     <ShowCase />
-    <Container className="container-home">{/* <Project /> */}</Container>
+    <Container className="container-home">
+      <StaticQuery
+        query={graphql`
+          query {
+            allStrapiSprintProject {
+              edges {
+                node {
+                  introduction
+                  description
+                  id
+                  nom
+                  tags
+                  cover {
+                    childImageSharp {
+                      fluid {
+                        src
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        `}
+        render={(data) =>
+          data.allStrapiSprintProject.edges.map((project) => {
+            let propsToPass = {
+              title: project.node.nom,
+              description: project.node.description,
+              image: project.node.cover.childImageSharp.fluid.src,
+              url: project.node.id,
+              tags: project.node.tags.split(',')
+            };
+
+            return <Project data={propsToPass} />;
+          })
+        }
+      />
+    </Container>
   </Layout>
 );
 

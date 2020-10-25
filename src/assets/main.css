@@ -12,6 +12,7 @@
 html {
   overflow: scroll;
   scroll-behavior: smooth;
+  padding: unset;
 }
 ::-webkit-scrollbar {
   width: 0px;
@@ -26,10 +27,18 @@ h2 {
   font-size: 2.5rem;
 }
 
-h2,
 .title {
   font-family: 'Indie Flower', serif;
   font-weight: 700;
+}
+
+h2.subtitle {
+  text-align: center;
+  margin-bottom: 5vh;
+}
+
+.intro-text {
+  font-family: 'Indie Flower', serif;
 }
 
 a,
@@ -40,8 +49,11 @@ a:active {
 }
 
 .container-home {
-  padding-top: 7vh;
   padding-bottom: 20vh;
+}
+
+.container-home:first-child {
+  padding-top: 8vh;
 }
 
 .home-section {
@@ -409,11 +421,36 @@ a:active {
 .project-image {
   width: 100%;
   border-radius: 5px;
-  transition: scale 0.5s;
+  transition: transform 0.5s;
 }
 
 .project-image:hover {
   transform: scale(1.05);
+}
+
+.project-cover {
+  position: relative;
+  height: 90vh;
+  padding: unset;
+}
+
+.project-cover img {
+  filter: brightness(75%);
+}
+
+.project-cover h1 {
+  color: white;
+  font-weight: 600;
+  font-size: 3rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.no-padding-x {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 @media (max-width: 767.98px) {

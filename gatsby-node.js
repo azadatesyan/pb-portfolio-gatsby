@@ -1,7 +1,32 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.com/docs/node-apis/
- */
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions;
+  const result = await graphql(
+    `
+      {
+        projects: allStrapiSprintProject {
+          edges {
+            node {
+              lien_url
+            }
+          }
+        }
+      }
+    `
+  );
 
-// You can delete this file if you're not using it
+  if (result.errors) {
+    throw result.errors;
+  }
+
+  // Create projects pages
+  const projects = result.data.projects.edges;
+  projects.forEach((project) => {
+    createPage({
+      path: `/projects/${project.node.lien_url}`,
+      component: require.resolve('./src/templates/project.js'),
+      context: {
+        link: project.node.lien_url
+      }
+    });
+  });
+};
