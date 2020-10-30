@@ -8,8 +8,10 @@ const Navbar = ({ open, setOpen }) => {
       <Container>
         <nav className="pb-navbar">
           <div className="pb-navbar-brand">
-            <span>Patrycja </span>
-            <span>Beblo</span>
+            <a href="/">
+              <span>Patrycja </span>
+              <span>Beblo</span>
+            </a>
           </div>
           <div
             onKeyUp={(e) => e.key === 'Enter' && setOpen(!open)}

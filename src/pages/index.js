@@ -21,14 +21,14 @@ const IndexPage = () => (
       <StaticQuery
         query={graphql`
           query {
-            allStrapiSprintProject {
+            allStrapiProject {
               edges {
                 node {
-                  introduction
                   description
                   id
                   nom
                   tags
+                  lien_url
                   cover {
                     childImageSharp {
                       fluid {
@@ -42,12 +42,12 @@ const IndexPage = () => (
           }
         `}
         render={(data) =>
-          data.allStrapiSprintProject.edges.map((project) => {
+          data.allStrapiProject.edges.map((project) => {
             let propsToPass = {
               title: project.node.nom,
               description: project.node.description,
               image: project.node.cover.childImageSharp.fluid.src,
-              url: project.node.id,
+              url: `projects/${project.node.lien_url}`,
               tags: project.node.tags.split(',')
             };
 

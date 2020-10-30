@@ -18,7 +18,7 @@ const NavDrawer = ({ open }) => {
                       node {
                         id
                         name
-                        path
+                        url_path
                       }
                     }
                   }
@@ -28,7 +28,7 @@ const NavDrawer = ({ open }) => {
                 data.allStrapiLink.edges.map((link) => {
                   return (
                     <li key={link.node.id}>
-                      <Link to={link.node.path}>{link.node.name}</Link>
+                      <Link to={link.node.url_path}>{link.node.name}</Link>
                     </li>
                   );
                 })

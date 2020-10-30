@@ -49,7 +49,7 @@ a:active {
 }
 
 .container-home {
-  padding-bottom: 20vh;
+  padding: 10vh 0;
 }
 
 .container-home:first-child {
@@ -122,6 +122,7 @@ a:active {
 }
 
 .left > ul li {
+  text-align: center;
   width: fit-content;
   margin: 2.5rem 0;
   font-weight: 600;
@@ -257,12 +258,12 @@ a:active {
   margin-left: -3px;
   background-color: black;
   border-radius: 100%;
-  -webkit-animation: sdb10 2s infinite;
-  animation: sdb10 2s infinite;
+  -webkit-animation: scrollanim 2s infinite;
+  animation: scrollanim 2s infinite;
   box-sizing: border-box;
 }
 
-@-webkit-keyframes sdb10 {
+@-webkit-keyframes scrollanim {
   0% {
     -webkit-transform: translate(0, 0);
     opacity: 0;
@@ -279,7 +280,7 @@ a:active {
   }
 }
 
-@keyframes sdb10 {
+@keyframes scrollanim {
   0% {
     transform: translate(0, 0);
     opacity: 0;
@@ -386,11 +387,17 @@ a:active {
 }
 
 .project {
-  margin: 10vh 0;
+  margin: 0;
 }
 
 .project:nth-child(even) {
   flex-direction: row-reverse;
+}
+
+.project-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .project-tag {
@@ -400,9 +407,14 @@ a:active {
   border-radius: 15px;
 }
 
+.project .project-tag:first-child {
+  margin-left: 0;
+}
+
 .seemore-cta {
   width: fit-content;
-  padding: 20px 0;
+  padding: 10px 0;
+  margin: 0;
   transition: transform 0.5s;
 }
 
@@ -421,11 +433,13 @@ a:active {
 .project-image {
   width: 100%;
   border-radius: 5px;
+  object-fit: cover;
+  transform: scale(0.95);
   transition: transform 0.5s;
 }
 
 .project-image:hover {
-  transform: scale(1.05);
+  transform: scale(1);
 }
 
 .project-cover {
@@ -453,12 +467,42 @@ a:active {
   padding-right: 0;
 }
 
+.chiffres-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+}
+
 @media (max-width: 767.98px) {
   .thumbnail-right {
     flex-direction: row;
     margin-top: 0.5rem;
   }
+
   .thumbnail-right div {
     width: 32%;
+  }
+
+  .side-drawer {
+    padding: 0;
+  }
+
+  .left > ul li {
+    margin: 2.5rem auto;
+  }
+
+  .project {
+    flex-direction: column-reverse;
+  }
+
+  .project-left {
+    text-align: center;
+    align-items: center;
+  }
+
+  .row {
+    margin-left: 0;
+    margin-right: 0;
   }
 }

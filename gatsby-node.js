@@ -3,7 +3,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(
     `
       {
-        projects: allStrapiSprintProject {
+        projects: allStrapiProject {
           edges {
             node {
               lien_url

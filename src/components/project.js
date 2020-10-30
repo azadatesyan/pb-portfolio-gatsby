@@ -10,22 +10,22 @@ const Project = ({ data }) => {
 
   return (
     <Row className="project">
-      <Col sm={6}>
-        <div>
+      <Col md={6} className="project-left">
+        <a className="seemore-cta" href={`/${data.url}`}>
           <h2> {data.title} </h2>
-          <p> {data.description} </p>
-          <div className="d-flex flex-row">{tagsMarkup}</div>
-          <p className="seemore-cta">
-            <a
-              href={`/${data.url}`}
-              //   style={{ textDecoration: 'none', color: 'black', width: 'auto' }}
-            >
-              See more
-            </a>
-          </p>
-        </div>
+        </a>
+        <p> {data.description} </p>
+        <div className="d-flex flex-row">{tagsMarkup}</div>
+        <p className="seemore-cta">
+          <a
+            href={`/${data.url}`}
+            //   style={{ textDecoration: 'none', color: 'black', width: 'auto' }}
+          >
+            See more
+          </a>
+        </p>
       </Col>
-      <Col sm={6}>
+      <Col md={6} className="d-flex">
         <img className="project-image" src={data.image} alt={data.title} />
       </Col>
     </Row>

@@ -3,17 +3,33 @@ import { graphql } from 'gatsby';
 
 import ReactMarkdown from 'react-markdown';
 
+import addType from '../util/addType';
+import orderElements from '../util/orderElements';
+
 import Layout from '../components/layout';
 import Container from 'react-bootstrap/esm/Container';
+import ChiffresIntro from '../components/Project-Page/chiffresIntro';
+import Citation from '../components/Project-Page/citation';
+import PhotoParagraphe from '../components/Project-Page/photoParagraphe';
+import Problematique from '../components/Project-Page/problematique';
+import Retour from '../components/Project-Page/retour';
 
 export const query = graphql`
-  query SprintProjectQuery($link: String!) {
-    strapiSprintProject(lien_url: { eq: $link }) {
+  query ProjectQuery($link: String!) {
+    strapiProject(lien_url: { eq: $link }) {
       chiffres_intro {
         chiffre
         chiffre_description
       }
-      citation_utilisateur
+      citation_utilisateur {
+        citation
+        auteur
+        ordre
+      }
+      retour_utilisateur {
+        texte
+        ordre
+      }
       cover {
         childImageSharp {
           fluid {
@@ -24,17 +40,14 @@ export const query = graphql`
       description
       introduction
       nom
-      problematique
-      tags
-      paragraphe_carrousel {
-        paragraphe
+      problematique {
+        problematique
         ordre
-        photos {
-          url
-        }
       }
+      tags
       photo_paragraphe {
         ordre
+        orientation
         paragraphe
         photo {
           url
@@ -45,9 +58,35 @@ export const query = graphql`
 `;
 
 const ProjectPage = ({ data }) => {
-  const project = data.strapiSprintProject;
+  const project = data.strapiProject;
+
+  const typedPhotoParagraphe = project.photo_paragraphe.map((element) =>
+    addType(element, 'photo_paragraphe')
+  );
+
+  const typedCitation = project.citation_utilisateur.map((element) =>
+    addType(element, 'citation_utilisateur')
+  );
+
+  const typedRetour = project.retour_utilisateur.map((element) =>
+    addType(element, 'retour_utilisateur')
+  );
+
+  const typedProblematique = addType(project.problematique, 'problematique');
+
+  const typedElements = [
+    ...typedPhotoParagraphe,
+    ...typedCitation,
+    ...typedRetour,
+    typedProblematique
+  ];
+
+  const orderedElements = orderElements(typedElements);
+
   return (
     <Layout>
+      {/* Jumbotron image cover */}
+
       <Container fluid className="container-home no-padding-x">
         <div className="project-cover">
           <img
@@ -61,24 +100,35 @@ const ProjectPage = ({ data }) => {
       {/* Si chiffres d'intro alors créer section */}
 
       {project.chiffres_intro && (
-        <Container className="container-home">
-          <div className="d-flex flex-row justify-content-around text-center">
-            {project.chiffres_intro.map((chiffre) => (
-              <div>
-                <h2>{chiffre.chiffre}</h2>
-                <h2>{chiffre.chiffre_description}</h2>
-              </div>
-            ))}
-          </div>
-        </Container>
+        <ChiffresIntro chiffres={project.chiffres_intro} />
       )}
 
-      {/* Fin chiffres d'intro */}
+      {/* Paragraphe d'introduction */}
 
       <Container className="container-home">
         <h2 className="subtitle">Concept</h2>
-        <p>{project.introduction}</p>
+        <ReactMarkdown>{project.introduction}</ReactMarkdown>
       </Container>
+
+      {/* Tous les autres éléments */}
+
+      {orderedElements.map((element) => {
+        switch (element.type) {
+          case 'photo_paragraphe':
+            return <PhotoParagraphe photoParagraphe={element} />;
+
+          case 'citation_utilisateur':
+            return <Citation citation={element} />;
+
+          case 'retour_utilisateur':
+            return <Retour retour={element} />;
+
+          case 'problematique':
+            return <Problematique problematique={element} />;
+
+          default:
+        }
+      })}
     </Layout>
   );
 };
