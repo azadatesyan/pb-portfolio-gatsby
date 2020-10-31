@@ -5,7 +5,7 @@ import ReactMarkdown from 'react-markdown';
 const Retour = ({ retour }) => {
   return (
     <Container className="container-home">
-      <div className="text-center">
+      <div className="text-center p-3">
         <ReactMarkdown>{retour.texte}</ReactMarkdown>
       </div>
     </Container>

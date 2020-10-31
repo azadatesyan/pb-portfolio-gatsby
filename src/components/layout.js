@@ -9,6 +9,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Navbar from './Navbar/navbar';
 import NavDrawer from './Navbar/navDrawer';
+import Footer from './footer';
 // import { useStaticQuery, graphql } from "gatsby"
 
 const Layout = ({ children }) => {
@@ -29,12 +30,13 @@ const Layout = ({ children }) => {
       <Navbar open={menuOpen} setOpen={setMenuOpen} />
       <NavDrawer open={menuOpen} />
       <main>{children}</main>
+      <Footer />
     </>
   );
 };
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 };
 
 export default Layout;

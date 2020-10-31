@@ -8,23 +8,23 @@ import Row from 'react-bootstrap/esm/Row';
 
 const PhotoParagraphe = ({ photoParagraphe }) => {
   return (
-    <Container className="container-home">
-      <div
-        className={`d-flex ${
-          photoParagraphe.orientation === 'horizontal'
-            ? 'flex-row'
-            : 'flex-column align-items-center'
-        }`}>
-        <div className="w-50 p-1">
+    <Container
+      fluid={photoParagraphe.orientation === 'vertical'}
+      className="container-home">
+      <div className="text-center">
+        <h2 className="project-title">{photoParagraphe.titre}</h2>
+      </div>
+      <Row className={`pp-row-${photoParagraphe.orientation}`}>
+        <Col lg={photoParagraphe.orientation === 'vertical' ? 10 : 6}>
           <img
-            className="w-100 h-100"
+            className="img-resp"
             src={`http://localhost:1337${photoParagraphe.photo[0].url}`}
           />
-        </div>
-        <div className="w-50 p-1">
+        </Col>
+        <Col lg={photoParagraphe.orientation === 'vertical' ? 10 : 6}>
           <ReactMarkdown>{photoParagraphe.paragraphe}</ReactMarkdown>
-        </div>
-      </div>
+        </Col>
+      </Row>
     </Container>
   );
 };

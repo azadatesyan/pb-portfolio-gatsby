@@ -47,6 +47,7 @@ export const query = graphql`
       tags
       photo_paragraphe {
         ordre
+        titre
         orientation
         paragraphe
         photo {
@@ -87,7 +88,7 @@ const ProjectPage = ({ data }) => {
     <Layout>
       {/* Jumbotron image cover */}
 
-      <Container fluid className="container-home no-padding-x">
+      <Container fluid className="pt-5 no-padding-x">
         <div className="project-cover">
           <img
             className="img-resp"
@@ -105,9 +106,11 @@ const ProjectPage = ({ data }) => {
 
       {/* Paragraphe d'introduction */}
 
-      <Container className="container-home">
+      <Container fluid className="container-home">
         <h2 className="subtitle">Concept</h2>
-        <ReactMarkdown>{project.introduction}</ReactMarkdown>
+        <ReactMarkdown className="text-justify">
+          {project.introduction}
+        </ReactMarkdown>
       </Container>
 
       {/* Tous les autres éléments */}

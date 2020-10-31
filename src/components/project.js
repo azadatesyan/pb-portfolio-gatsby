@@ -26,7 +26,9 @@ const Project = ({ data }) => {
         </p>
       </Col>
       <Col md={6} className="d-flex">
-        <img className="project-image" src={data.image} alt={data.title} />
+        <a href={`/${data.url}`}>
+          <img className="project-image" src={data.image} alt={data.title} />
+        </a>
       </Col>
     </Row>
   );
