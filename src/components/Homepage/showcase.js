@@ -20,7 +20,11 @@ const ShowCase = () => {
             homecarousel {
               formats {
                 medium {
-                  url
+                  childImageSharp {
+                    fluid {
+                      srcSet
+                    }
+                  }
                 }
               }
             }
@@ -44,19 +48,28 @@ const ShowCase = () => {
               <div className="thumbnail-right">
                 <div className="thumbnail-item">
                   <img
-                    src={data.strapiHomepage.homecarousel[0].formats.medium.url}
+                    srcSet={
+                      data.strapiHomepage.homecarousel[0].formats.medium
+                        .childImageSharp.fluid.srcSet
+                    }
                     alt="graphic img"
                   />
                 </div>
                 <div className="thumbnail-item">
                   <img
-                    src={data.strapiHomepage.homecarousel[1].formats.medium.url}
+                    srcSet={
+                      data.strapiHomepage.homecarousel[1].formats.medium
+                        .childImageSharp.fluid.srcSet
+                    }
                     alt="graphic img"
                   />
                 </div>
                 <div className="thumbnail-item">
                   <img
-                    src={data.strapiHomepage.homecarousel[2].formats.medium.url}
+                    srcSet={
+                      data.strapiHomepage.homecarousel[2].formats.medium
+                        .childImageSharp.fluid.srcSet
+                    }
                     alt="graphic img"
                   />
                 </div>
