@@ -1,3 +1,4 @@
+import { Link } from 'gatsby';
 import React from 'react';
 
 import Container from 'react-bootstrap/Container';
@@ -8,15 +9,13 @@ const Navbar = ({ open, setOpen }) => {
       <Container>
         <nav className="pb-navbar">
           <div className="pb-navbar-brand">
-            <a href="/">
+            <Link to="/">
               <span>Patrycja </span>
               <span>Beblo</span>
-            </a>
+            </Link>
           </div>
           <div
             onKeyUp={(e) => e.key === 'Enter' && setOpen(!open)}
-            tabIndex="0"
-            role="button"
             className={`menu-btn ${open ? 'open' : ''}`}
             onClick={() => setOpen(!open)}>
             <div className="menu-btn-burger"></div>
