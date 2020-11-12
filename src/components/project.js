@@ -2,6 +2,7 @@ import React from 'react';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { Link } from 'gatsby';
 
 const Project = ({ data }) => {
   const tagsMarkup = data.tags.map((tag) => (
@@ -17,18 +18,13 @@ const Project = ({ data }) => {
         <p> {data.description} </p>
         <div className="d-flex flex-row">{tagsMarkup}</div>
         <p className="seemore-cta">
-          <a
-            href={`/${data.url}`}
-            //   style={{ textDecoration: 'none', color: 'black', width: 'auto' }}
-          >
-            See more
-          </a>
+          <Link to={`/${data.url}`}>See more</Link>
         </p>
       </Col>
       <Col md={6} className="d-flex">
-        <a href={`/${data.url}`}>
+        <Link to={`/${data.url}`}>
           <img className="project-image" src={data.image} alt={data.title} />
-        </a>
+        </Link>
       </Col>
     </Row>
   );

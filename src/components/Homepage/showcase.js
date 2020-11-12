@@ -19,7 +19,7 @@ const ShowCase = () => {
             carouseltitle
             homecarousel {
               formats {
-                medium {
+                large {
                   childImageSharp {
                     fluid {
                       srcSet
@@ -49,7 +49,7 @@ const ShowCase = () => {
                 <div className="thumbnail-item">
                   <img
                     srcSet={
-                      data.strapiHomepage.homecarousel[0].formats.medium
+                      data.strapiHomepage.homecarousel[0].formats.large
                         .childImageSharp.fluid.srcSet
                     }
                     alt="graphic img"
@@ -58,7 +58,7 @@ const ShowCase = () => {
                 <div className="thumbnail-item">
                   <img
                     srcSet={
-                      data.strapiHomepage.homecarousel[1].formats.medium
+                      data.strapiHomepage.homecarousel[1].formats.large
                         .childImageSharp.fluid.srcSet
                     }
                     alt="graphic img"
@@ -67,7 +67,7 @@ const ShowCase = () => {
                 <div className="thumbnail-item">
                   <img
                     srcSet={
-                      data.strapiHomepage.homecarousel[2].formats.medium
+                      data.strapiHomepage.homecarousel[2].formats.large
                         .childImageSharp.fluid.srcSet
                     }
                     alt="graphic img"
