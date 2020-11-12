@@ -18,7 +18,7 @@ const PhotoParagraphe = ({ photoParagraphe }) => {
         <Col lg={photoParagraphe.orientation === 'vertical' ? 10 : 6}>
           <img
             className="img-resp"
-            src={`http://localhost:1337${photoParagraphe.photo[0].url}`}
+            srcSet={photoParagraphe.photo.childImageSharp.fluid.srcSet}
           />
         </Col>
         <Col lg={photoParagraphe.orientation === 'vertical' ? 10 : 6}>

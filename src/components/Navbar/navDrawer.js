@@ -6,45 +6,56 @@ import Container from 'react-bootstrap/Container';
 
 const NavDrawer = ({ open }) => {
   return (
-    <div className={`side-drawer ${open ? 'open' : ''}`}>
-      <Container>
-        <div className="left">
-          <ul>
-            <StaticQuery
-              query={graphql`
-                query {
-                  allStrapiLink {
-                    edges {
-                      node {
-                        id
-                        name
-                        url_path
-                      }
-                    }
-                  }
+    <StaticQuery
+      query={graphql`
+        query {
+          allStrapiLink {
+            edges {
+              node {
+                id
+                name
+                url_path
+              }
+            }
+          }
+          strapiHomepage {
+            menupicture {
+              childImageSharp {
+                fluid {
+                  srcSet
                 }
-              `}
-              render={(data) =>
-                data.allStrapiLink.edges.map((link) => {
+              }
+            }
+          }
+        }
+      `}
+      render={(data) => (
+        <div className={`side-drawer ${open ? 'open' : ''}`}>
+          <Container>
+            <div className="left">
+              <ul>
+                {data.allStrapiLink.edges.map((link) => {
                   return (
                     <li key={link.node.id}>
                       <Link to={link.node.url_path}>{link.node.name}</Link>
                     </li>
                   );
-                })
-              }
-            />
-          </ul>
+                })}
+              </ul>
+            </div>
+            <div className="right">
+              <img
+                alt="Graphic Design Artwork"
+                className="img-resp"
+                srcSet={
+                  data.strapiHomepage.menupicture.childImageSharp.fluid.srcSet
+                }
+              />
+            </div>
+          </Container>
         </div>
-        <div className="right">
-          <img
-            alt="Graphic Design Artwork"
-            className="img-resp"
-            src="https://images.unsplash.com/photo-1541580621-39f717ce77cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
-          />
-        </div>
-      </Container>
-    </div>
+      )}
+    />
   );
 };
 

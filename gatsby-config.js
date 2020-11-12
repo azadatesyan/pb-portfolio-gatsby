@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Patrycja Beblo - UX/UI Designer`,
     description: `Hello I am a UX designer`,
-    author: `Olivier Atesyan`
+    author: `Patrycja Beblo`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -22,6 +22,7 @@ module.exports = {
           `project`,
           `link`
         ],
+        singleTypes: [`homepage`],
         queryLimit: 1000
       }
     },

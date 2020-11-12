@@ -6,37 +6,66 @@ import Col from 'react-bootstrap/Col';
 import graphicVector from '../../assets/showcase-1.jpg';
 import otherGraphicVector from '../../assets/showcase-2.jpg';
 import userTestingVector from '../../assets/showcase-3.jpg';
+import { graphql, StaticQuery } from 'gatsby';
+import ReactMarkdown from 'react-markdown';
 
 const ShowCase = () => {
   return (
-    <Container id="showcase" className="container-home">
-      <Row className="home-section">
-        <Col md={9}>
-          <div className="thumbnail-left">
-            <div className="thumbnail-left-text">
-              <p className="title">Discover more about me</p>
-              <p>
-                My purpose is to listen and understand you to create interfaces
-                that are visually appealing but also meaningful and inclusive.
-              </p>
-            </div>
-          </div>
-        </Col>
-        <Col md={3}>
-          <div className="thumbnail-right">
-            <div className="thumbnail-item">
-              <img src={graphicVector} alt="graphic img" />
-            </div>
-            <div className="thumbnail-item">
-              <img src={otherGraphicVector} alt="graphic img" />
-            </div>
-            <div className="thumbnail-item">
-              <img src={userTestingVector} alt="graphic img" />
-            </div>
-          </div>
-        </Col>
-      </Row>
-    </Container>
+    <StaticQuery
+      query={graphql`
+        query {
+          strapiHomepage {
+            carouseltext
+            carouseltitle
+            homecarousel {
+              formats {
+                medium {
+                  url
+                }
+              }
+            }
+          }
+        }
+      `}
+      render={(data) => (
+        <Container id="showcase" className="container-home">
+          <Row className="home-section">
+            <Col md={9}>
+              <div className="thumbnail-left">
+                <div className="thumbnail-left-text">
+                  <p className="title">{data.strapiHomepage.carouseltitle}</p>
+                  <ReactMarkdown>
+                    {data.strapiHomepage.carouseltext}
+                  </ReactMarkdown>
+                </div>
+              </div>
+            </Col>
+            <Col md={3}>
+              <div className="thumbnail-right">
+                <div className="thumbnail-item">
+                  <img
+                    src={data.strapiHomepage.homecarousel[0].formats.medium.url}
+                    alt="graphic img"
+                  />
+                </div>
+                <div className="thumbnail-item">
+                  <img
+                    src={data.strapiHomepage.homecarousel[1].formats.medium.url}
+                    alt="graphic img"
+                  />
+                </div>
+                <div className="thumbnail-item">
+                  <img
+                    src={data.strapiHomepage.homecarousel[2].formats.medium.url}
+                    alt="graphic img"
+                  />
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      )}
+    />
   );
 };
 

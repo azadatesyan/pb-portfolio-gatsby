@@ -13,6 +13,7 @@ import Citation from '../components/Project-Page/citation';
 import PhotoParagraphe from '../components/Project-Page/photoParagraphe';
 import Problematique from '../components/Project-Page/problematique';
 import Retour from '../components/Project-Page/retour';
+import ImageSeule from '../components/Project-Page/imageSeule';
 
 export const query = graphql`
   query ProjectQuery($link: String!) {
@@ -26,14 +27,25 @@ export const query = graphql`
         auteur
         ordre
       }
-      retour_utilisateur {
+      image_seule {
+        ordre
+        titre
+        image {
+          childImageSharp {
+            fluid {
+              srcSet
+            }
+          }
+        }
+      }
+      paragraphe_texte {
         texte
         ordre
       }
       cover {
         childImageSharp {
           fluid {
-            src
+            srcSet
           }
         }
       }
@@ -51,7 +63,11 @@ export const query = graphql`
         orientation
         paragraphe
         photo {
-          url
+          childImageSharp {
+            fluid {
+              srcSet
+            }
+          }
         }
       }
     }
@@ -69,8 +85,12 @@ const ProjectPage = ({ data }) => {
     addType(element, 'citation_utilisateur')
   );
 
-  const typedRetour = project.retour_utilisateur.map((element) =>
-    addType(element, 'retour_utilisateur')
+  const typedParagraphe = project.paragraphe_texte.map((element) =>
+    addType(element, 'paragraphe_texte')
+  );
+
+  const typedImageSeule = project.image_seule.map((element) =>
+    addType(element, 'image_seule')
   );
 
   const typedProblematique = addType(project.problematique, 'problematique');
@@ -78,7 +98,8 @@ const ProjectPage = ({ data }) => {
   const typedElements = [
     ...typedPhotoParagraphe,
     ...typedCitation,
-    ...typedRetour,
+    ...typedParagraphe,
+    ...typedImageSeule,
     typedProblematique
   ];
 
@@ -92,7 +113,7 @@ const ProjectPage = ({ data }) => {
         <div className="project-cover">
           <img
             className="img-resp"
-            src={`http://localhost:1337${project.photo_paragraphe[0].photo[0].url}`}
+            srcSet={project.cover.childImageSharp.fluid.srcSet}
           />
           <h1>{project.nom}</h1>
         </div>
@@ -123,13 +144,17 @@ const ProjectPage = ({ data }) => {
           case 'citation_utilisateur':
             return <Citation citation={element} />;
 
-          case 'retour_utilisateur':
+          case 'paragraphe_texte':
             return <Retour retour={element} />;
 
           case 'problematique':
             return <Problematique problematique={element} />;
 
+          case 'image_seule':
+            return <ImageSeule imageSeule={element} />;
+
           default:
+            break;
         }
       })}
     </Layout>
