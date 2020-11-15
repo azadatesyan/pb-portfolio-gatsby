@@ -3,9 +3,6 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import graphicVector from '../../assets/showcase-1.jpg';
-import otherGraphicVector from '../../assets/showcase-2.jpg';
-import userTestingVector from '../../assets/showcase-3.jpg';
 import { graphql, StaticQuery } from 'gatsby';
 import ReactMarkdown from 'react-markdown';
 

@@ -531,12 +531,7 @@ h2.citation {
 
 .container-home.footer {
   padding: 5vh 5vw;
-  background-color: black;
-  color: white;
-}
-
-.footer div:last-child p:last-child {
-  margin-bottom: 0;
+  width: 100vw;
 }
 
 @media (max-width: 767.98px) {
