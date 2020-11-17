@@ -30,6 +30,7 @@ const ShowCase = () => {
       `}
       render={(data) => (
         <Container id="showcase" className="container-home">
+          <h5>À propos de moi</h5>
           <Row className="home-section">
             <Col md={9}>
               <div className="thumbnail-left">

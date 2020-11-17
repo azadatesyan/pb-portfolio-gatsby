@@ -8,6 +8,7 @@ import Container from 'react-bootstrap/Container';
 const Footer = () => {
   return (
     <Container fluid className="p-0">
+      <h5>Contact</h5>
       <div className="container-home footer text-center">
         <p className="title">Faisons connaissance !</p>
         <p>

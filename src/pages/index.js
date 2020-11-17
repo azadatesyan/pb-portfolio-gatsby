@@ -18,6 +18,7 @@ const IndexPage = () => (
     <MainSection />
     <ShowCase />
     <Container id="projectslist" className="container-home">
+      <h5>Mes projets</h5>
       <StaticQuery
         query={graphql`
           query {

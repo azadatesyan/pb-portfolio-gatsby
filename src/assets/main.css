@@ -49,6 +49,26 @@ a:active {
   color: black;
 }
 
+h5 {
+  line-height: 1.3;
+  font-weight: 400;
+  font-size: 1rem;
+  text-transform: uppercase;
+  display: inline-block;
+  vertical-align: top;
+  margin-bottom: 15px;
+}
+
+h5::before {
+  content: '';
+  display: inline-block;
+  width: 50px;
+  height: 1px;
+  background: #555;
+  vertical-align: top;
+  margin: 10px 15px 0 0;
+}
+
 .container-home {
   padding: 10vh 0;
 }
@@ -371,7 +391,7 @@ h2.citation {
 
 .thumbnail-left {
   padding: 5% 0;
-  background-color: #f2f3f4;
+  background-color: #fef1ee;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -401,10 +421,6 @@ h2.citation {
   object-fit: cover;
 }
 
-.project {
-  margin: 0;
-}
-
 .project.row {
   margin-bottom: 7vh;
 }
@@ -418,15 +434,22 @@ h2.citation {
 }
 
 .project-left {
+  background-color: #fef1ee;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  text-align: center;
+}
+
+.project-right {
+  display: flex;
+  padding-right: 0;
 }
 
 .project-tag {
   padding: 5px 10px;
   margin: 10px;
-  background-color: #f2f3f4;
+  background-color: white;
   border-radius: 15px;
 }
 
@@ -437,7 +460,7 @@ h2.citation {
 .seemore-cta {
   width: fit-content;
   padding: 10px 0;
-  margin: 0;
+  margin: 0 auto;
   transition: transform 0.5s;
 }
 
@@ -455,14 +478,13 @@ h2.citation {
 
 .project-image {
   width: 100%;
-  border-radius: 5px;
+  height: 100%;
   object-fit: cover;
-  transform: scale(0.95);
   transition: transform 0.5s;
 }
 
 .project-image:hover {
-  transform: scale(1);
+  transform: scale(1.05);
 }
 
 .project-cover {
@@ -540,6 +562,10 @@ h2.citation {
 }
 
 @media (max-width: 767.98px) {
+  h5::before {
+    margin-left: 15px;
+  }
+
   .home-section {
     min-height: unset;
   }
@@ -574,8 +600,12 @@ h2.citation {
   }
 
   .project-left {
-    text-align: center;
+    margin: 0 15px;
     align-items: center;
+  }
+
+  .project-right {
+    margin-right: 15px;
   }
 
   .row {
@@ -585,7 +615,6 @@ h2.citation {
 
   .container-home {
     padding: 7vh 2vw;
-    text-align: center;
   }
 
   .container-fluid.container-home {

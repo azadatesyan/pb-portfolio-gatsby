@@ -16,12 +16,11 @@ const Project = ({ data }) => {
           <h2> {data.title} </h2>
         </a>
         <p> {data.description} </p>
-        <div className="d-flex flex-row">{tagsMarkup}</div>
-        <p className="seemore-cta">
-          <Link to={`/${data.url}`}>See more</Link>
-        </p>
+        <div className="d-flex flex-row justify-content-center">
+          {tagsMarkup}
+        </div>
       </Col>
-      <Col md={6} className="d-flex">
+      <Col md={6} className="project-right">
         <Link to={`/${data.url}`}>
           <img className="project-image" src={data.image} alt={data.title} />
         </Link>
