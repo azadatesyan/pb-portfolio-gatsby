@@ -12,9 +12,9 @@ const Project = ({ data }) => {
   return (
     <Row className="project">
       <Col md={6} className="project-left">
-        <a className="seemore-cta" href={`/${data.url}`}>
+        <Link className="seemore-cta" to={`/${data.url}`}>
           <h2> {data.title} </h2>
-        </a>
+        </Link>
         <p> {data.description} </p>
         <div className="d-flex flex-row justify-content-center">
           {tagsMarkup}
