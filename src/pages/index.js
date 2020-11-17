@@ -17,7 +17,7 @@ const IndexPage = () => (
     <SEO title="Home" />
     <MainSection />
     <ShowCase />
-    <Container className="container-home">
+    <Container id="projectslist" className="container-home">
       <StaticQuery
         query={graphql`
           query {

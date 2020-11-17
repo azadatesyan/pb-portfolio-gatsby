@@ -370,6 +370,7 @@ h2.citation {
 }
 
 .thumbnail-left {
+  padding: 5% 0;
   background-color: #f2f3f4;
   display: flex;
   justify-content: center;
@@ -405,7 +406,11 @@ h2.citation {
 }
 
 .project.row {
-  margin-bottom: 10vh;
+  margin-bottom: 7vh;
+}
+
+.project.row:last-child {
+  margin-bottom: 0;
 }
 
 .project:nth-child(even) {
@@ -535,6 +540,18 @@ h2.citation {
 }
 
 @media (max-width: 767.98px) {
+  .home-section {
+    min-height: unset;
+  }
+
+  #showcase > .home-section .col-md-3 {
+    height: 100%;
+  }
+
+  .thumbnail-item {
+    height: unset;
+  }
+
   .thumbnail-right {
     flex-direction: row;
     margin-top: 0.5rem;
@@ -567,11 +584,11 @@ h2.citation {
   }
 
   .container-home {
-    padding: 10vh 2vw;
+    padding: 7vh 2vw;
     text-align: center;
   }
 
   .container-fluid.container-home {
-    padding: 10vh 5vw;
+    padding: 7vh 5vw;
   }
 }

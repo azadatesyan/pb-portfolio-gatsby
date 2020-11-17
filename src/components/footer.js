@@ -14,15 +14,21 @@ const Footer = () => {
           Contactez-moi pour discuter de votre projet, ou simplement pour faire
           connaissance 👋
         </p>
-        <div className="d-flex flex-row justify-content-center w-50">
+        <div className="d-flex flex-row justify-content-around w-50 mx-auto">
           <div>
-            <FontAwesomeIcon icon={faLinkedin} size="2x" />
+            <a href="https://www.linkedin.com/in/patrycja-beblo/">
+              <FontAwesomeIcon icon={faLinkedin} size="2x" />
+            </a>
           </div>
           <div>
-            <FontAwesomeIcon icon={faEnvelope} size="2x" />
+            <a href="mailto:patrycja.beblo@hotmail.com">
+              <FontAwesomeIcon icon={faEnvelope} size="2x" />
+            </a>
           </div>
           <div>
-            <FontAwesomeIcon icon={faMedium} size="2x" />
+            <a href="https://medium.com/@paty.b">
+              <FontAwesomeIcon icon={faMedium} size="2x" />
+            </a>
           </div>
         </div>
       </div>
