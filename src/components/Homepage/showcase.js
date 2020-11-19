@@ -45,31 +45,61 @@ const ShowCase = () => {
             <Col md={3}>
               <div className="thumbnail-right">
                 <div className="thumbnail-item">
-                  <img
-                    srcSet={
-                      data.strapiHomepage.homecarousel[0].formats.large
-                        .childImageSharp.fluid.srcSet
-                    }
-                    alt="graphic img"
-                  />
+                  {data.strapiHomepage.homecarousel[0].formats.large
+                    .childImageSharp.fluid.srcSet ? (
+                    <img
+                      srcSet={
+                        data.strapiHomepage.homecarousel[0].formats.large
+                          .childImageSharp.fluid.srcSet
+                      }
+                      alt="graphic img"
+                    />
+                  ) : (
+                    <img
+                      src={
+                        'https://res.cloudinary.com/djirave24/image/upload/v1605639838/large_carousel_2_0b6085e49a.jpg'
+                      }
+                      alt="graphic img"
+                    />
+                  )}
                 </div>
                 <div className="thumbnail-item">
-                  <img
-                    srcSet={
-                      data.strapiHomepage.homecarousel[1].formats.large
-                        .childImageSharp.fluid.srcSet
-                    }
-                    alt="graphic img"
-                  />
+                  {data.strapiHomepage.homecarousel[1].formats.large
+                    .childImageSharp.fluid.srcSet ? (
+                    <img
+                      srcSet={
+                        data.strapiHomepage.homecarousel[1].formats.large
+                          .childImageSharp.fluid.srcSet
+                      }
+                      alt="graphic img"
+                    />
+                  ) : (
+                    <img
+                      src={
+                        'https://res.cloudinary.com/djirave24/image/upload/v1605639838/large_carousel_1_6a743ca954.jpg'
+                      }
+                      alt="graphic img"
+                    />
+                  )}
                 </div>
                 <div className="thumbnail-item">
-                  <img
-                    srcSet={
-                      data.strapiHomepage.homecarousel[2].formats.large
-                        .childImageSharp.fluid.srcSet
-                    }
-                    alt="graphic img"
-                  />
+                  {data.strapiHomepage.homecarousel[2].formats.large
+                    .childImageSharp.fluid.srcSet ? (
+                    <img
+                      srcSet={
+                        data.strapiHomepage.homecarousel[2].formats.large
+                          .childImageSharp.fluid.srcSet
+                      }
+                      alt="graphic img"
+                    />
+                  ) : (
+                    <img
+                      src={
+                        'https://res.cloudinary.com/djirave24/image/upload/v1605644222/large_IMG_0969_fa44df4b6c.jpg'
+                      }
+                      alt="graphic img"
+                    />
+                  )}
                 </div>
               </div>
             </Col>
