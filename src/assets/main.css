@@ -595,8 +595,9 @@ h2.citation {
     margin: 2.5rem auto;
   }
 
-  .project {
-    flex-direction: column-reverse;
+  .project,
+  .project:nth-child(even) {
+    flex-direction: row-reverse;
   }
 
   .project-left {
@@ -619,5 +620,16 @@ h2.citation {
 
   .container-fluid.container-home {
     padding: 7vh 5vw;
+  }
+}
+
+@media (min-width: 768px) {
+  .project:nth-child(odd) .project-left {
+    margin-left: 15px;
+  }
+
+  .project:nth-child(odd) .project-right {
+    margin-left: -15px;
+    padding-left: 0;
   }
 }
