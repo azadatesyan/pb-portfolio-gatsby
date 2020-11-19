@@ -93,7 +93,9 @@ const ProjectPage = ({ data }) => {
     addType(element, 'image_seule')
   );
 
-  const typedProblematique = addType(project.problematique, 'problematique');
+  const typedProblematique = project.problematique
+    ? addType(project.problematique, 'problematique')
+    : null;
 
   const typedElements = [
     ...typedPhotoParagraphe,
