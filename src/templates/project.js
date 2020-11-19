@@ -93,17 +93,16 @@ const ProjectPage = ({ data }) => {
     addType(element, 'image_seule')
   );
 
-  const typedProblematique = project.problematique
-    ? addType(project.problematique, 'problematique')
-    : null;
-
   const typedElements = [
     ...typedPhotoParagraphe,
     ...typedCitation,
     ...typedParagraphe,
-    ...typedImageSeule,
-    typedProblematique
+    ...typedImageSeule
   ];
+
+  const typedProblematique =
+    project.problematique && addType(project.problematique, 'problematique');
+  project.problematique && typedElements.push(typedProblematique);
 
   const orderedElements = orderElements(typedElements);
 
