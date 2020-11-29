@@ -129,7 +129,7 @@ const ProjectPage = ({ data }) => {
       {/* Paragraphe d'introduction */}
 
       <Container fluid className="container-home">
-        <h2 className="subtitle">Concept</h2>
+        <h2 className="project-title">Projet</h2>
         <ReactMarkdown className="text-justify">
           {project.introduction}
         </ReactMarkdown>

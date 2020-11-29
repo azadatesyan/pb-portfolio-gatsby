@@ -21,7 +21,9 @@ const PhotoParagraphe = ({ photoParagraphe }) => {
             srcSet={photoParagraphe.photo.childImageSharp.fluid.srcSet}
           />
         </Col>
-        <Col lg={photoParagraphe.orientation === 'vertical' ? 10 : 6}>
+        <Col
+          lg={photoParagraphe.orientation === 'vertical' ? 10 : 6}
+          className="d-flex flex-column justify-content-center">
           <ReactMarkdown>{photoParagraphe.paragraphe}</ReactMarkdown>
         </Col>
       </Row>
