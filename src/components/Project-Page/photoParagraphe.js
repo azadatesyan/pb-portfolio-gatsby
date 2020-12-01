@@ -16,7 +16,11 @@ const PhotoParagraphe = ({ photoParagraphe }) => {
 
       case 'mp4':
         return (
-          <video className="img-resp" src={photoParagraphe.photo.publicURL} />
+          <video
+            controls
+            className="img-resp"
+            src={photoParagraphe.photo.publicURL}
+          />
         );
 
       default:
