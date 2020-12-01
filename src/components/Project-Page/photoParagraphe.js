@@ -7,6 +7,28 @@ import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/esm/Row';
 
 const PhotoParagraphe = ({ photoParagraphe }) => {
+  const imgElement = ((extension) => {
+    switch (extension) {
+      case 'gif':
+        return (
+          <img className="img-resp" src={photoParagraphe.photo.publicURL} />
+        );
+
+      case 'mp4':
+        return (
+          <video className="img-resp" src={photoParagraphe.photo.publicURL} />
+        );
+
+      default:
+        return (
+          <img
+            className="img-resp"
+            srcSet={photoParagraphe.photo.childImageSharp.fluid.srcSet}
+          />
+        );
+    }
+  })(photoParagraphe.photo.extension);
+
   return (
     <Container
       fluid={photoParagraphe.orientation === 'vertical'}
@@ -16,10 +38,7 @@ const PhotoParagraphe = ({ photoParagraphe }) => {
       </div>
       <Row className={`pp-row-${photoParagraphe.orientation}`}>
         <Col lg={photoParagraphe.orientation === 'vertical' ? 10 : 6}>
-          <img
-            className="img-resp"
-            srcSet={photoParagraphe.photo.childImageSharp.fluid.srcSet}
-          />
+          {imgElement}
         </Col>
         <Col
           lg={photoParagraphe.orientation === 'vertical' ? 10 : 6}

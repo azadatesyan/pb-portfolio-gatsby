@@ -31,6 +31,8 @@ export const query = graphql`
         ordre
         titre
         image {
+          extension
+          publicURL
           childImageSharp {
             fluid {
               srcSet
@@ -63,6 +65,8 @@ export const query = graphql`
         orientation
         paragraphe
         photo {
+          extension
+          publicURL
           childImageSharp {
             fluid {
               srcSet

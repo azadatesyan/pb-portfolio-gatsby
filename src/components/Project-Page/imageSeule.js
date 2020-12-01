@@ -7,6 +7,24 @@ import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/esm/Row';
 
 const ImageSeule = ({ imageSeule }) => {
+  const imgElement = ((extension) => {
+    switch (extension) {
+      case 'gif':
+        return <img className="img-resp" src={imageSeule.image.publicURL} />;
+
+      case 'mp4':
+        return <video className="img-resp" src={imageSeule.image.publicURL} />;
+
+      default:
+        return (
+          <img
+            className="img-resp"
+            srcSet={imageSeule.image.childImageSharp.fluid.srcSet}
+          />
+        );
+    }
+  })(imageSeule.image.extension);
+
   return (
     <Container fluid className="container-home">
       {imageSeule.titre && (
@@ -15,12 +33,7 @@ const ImageSeule = ({ imageSeule }) => {
         </div>
       )}
       <Row className={`pp-row-vertical`}>
-        <Col lg={10}>
-          <img
-            className="img-resp"
-            srcSet={imageSeule.image.childImageSharp.fluid.srcSet}
-          />
-        </Col>
+        <Col lg={10}>{imgElement}</Col>
       </Row>
     </Container>
   );
