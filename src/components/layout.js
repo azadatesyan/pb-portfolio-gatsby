@@ -5,7 +5,7 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Navbar from './Navbar/navbar';
 import NavDrawer from './Navbar/navDrawer';
@@ -24,6 +24,15 @@ const Layout = ({ children }) => {
   // `)
 
   const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    console.log('Menu opened = ', menuOpen);
+    if (menuOpen) {
+      document.getElementsByTagName('html')[0].style.overflow = 'hidden';
+    } else {
+      document.getElementsByTagName('html')[0].style.overflow = 'unset';
+    }
+  }, [menuOpen]);
 
   return (
     <>
