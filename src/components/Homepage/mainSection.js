@@ -14,7 +14,7 @@ import { Bounce, Slide, Zoom } from 'react-reveal';
 
 const MainSection = () => {
   return (
-    <Container className="container-home">
+    <Container id="introhome" className="container-home">
       <StaticQuery
         query={graphql`
           query {

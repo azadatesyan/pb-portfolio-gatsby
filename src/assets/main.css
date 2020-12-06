@@ -187,6 +187,10 @@ h2.citation {
   font-weight: normal;
 }
 
+.mybg-primary {
+  background-color: #fef1ee;
+}
+
 .pp-row-vertical img.img-resp {
   max-height: 60vh;
 }
@@ -573,6 +577,22 @@ h2.citation {
 }
 
 @media (max-width: 767.98px) {
+  #introhome .col-sm-6:nth-child(1) {
+    margin-top: 25px;
+  }
+
+  #introhome .col-sm-6:nth-child(2) {
+    margin-top: 40px;
+  }
+
+  #showcase {
+    margin-top: 40px;
+  }
+
+  h2.problematique {
+    font-size: 1.5rem;
+  }
+
   h5::before {
     margin-left: 15px;
   }

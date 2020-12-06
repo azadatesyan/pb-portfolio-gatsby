@@ -4,9 +4,9 @@ import Container from 'react-bootstrap/esm/Container';
 
 const Problematique = ({ problematique }) => {
   return (
-    <Container className="container-home">
+    <Container fluid className="container-home mybg-primary">
       <div className="text-center">
-        <h2>
+        <h2 className="problematique">
           <Fade bottom>{problematique.problematique}</Fade>
         </h2>
       </div>

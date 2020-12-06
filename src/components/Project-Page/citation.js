@@ -6,7 +6,7 @@ const Citation = ({ citation }) => {
   const quotedCitation = `"${citation.citation}"`;
 
   return (
-    <Container className="container-home">
+    <Container fluid className="container-home mybg-primary">
       <div className="text-center">
         <h2 className="citation">
           <Fade bottom>
