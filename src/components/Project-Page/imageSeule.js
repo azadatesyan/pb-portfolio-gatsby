@@ -1,7 +1,7 @@
 import React from 'react';
 
 import ReactMarkdown from 'react-markdown';
-
+import Fade from 'react-reveal/Fade';
 import Col from 'react-bootstrap/esm/Col';
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/esm/Row';
@@ -33,7 +33,9 @@ const ImageSeule = ({ imageSeule }) => {
         </div>
       )}
       <Row className={`pp-row-vertical`}>
-        <Col lg={10}>{imgElement}</Col>
+        <Fade left>
+          <div className="col-lg-10">{imgElement}</div>
+        </Fade>
       </Row>
     </Container>
   );

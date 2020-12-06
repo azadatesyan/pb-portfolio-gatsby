@@ -1,19 +1,36 @@
 import React from 'react';
 import Container from 'react-bootstrap/esm/Container';
+import Fade from 'react-reveal/Fade';
+import CountUp from 'react-countup';
 
 const ChiffresIntro = ({ chiffres }) => {
   return (
     <Container className="container-home">
       <div className="chiffres-container">
         {chiffres.map((chiffre) => {
-          const chiffreEspace = chiffre.chiffre
-            .toString()
-            .replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
           return (
             <div>
-              <h2>{chiffreEspace}</h2>
+              <Fade bottom>
+                <CountUp
+                  start={0}
+                  end={chiffre.chiffre}
+                  delay={0.5}
+                  separator=" "
+                  duration={2}>
+                  {({ countUpRef, start }) => (
+                    <div>
+                      <Fade bottom onReveal={() => start()}>
+                        <div>
+                          <h2 ref={countUpRef}></h2>
+                        </div>
+                      </Fade>
+                    </div>
+                  )}
+                </CountUp>
+              </Fade>
+
               <h2 className="chiffre-description">
-                {chiffre.chiffre_description}
+                <Fade bottom>{chiffre.chiffre_description}</Fade>
               </h2>
             </div>
           );

@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Rotate, Fade, Slide } from 'react-reveal';
 import ReactMarkdown from 'react-markdown';
 
 import Col from 'react-bootstrap/esm/Col';
@@ -40,16 +41,18 @@ const PhotoParagraphe = ({ photoParagraphe }) => {
       <div className="text-center">
         <h2 className="project-title">{photoParagraphe.titre}</h2>
       </div>
-      <Row className={`pp-row-${photoParagraphe.orientation}`}>
-        <Col lg={photoParagraphe.orientation === 'vertical' ? 10 : 6}>
-          {imgElement}
-        </Col>
-        <Col
-          lg={photoParagraphe.orientation === 'vertical' ? 10 : 6}
-          className="d-flex flex-column justify-content-center">
-          <ReactMarkdown>{photoParagraphe.paragraphe}</ReactMarkdown>
-        </Col>
-      </Row>
+      <Fade bottom distance="150px">
+        <div className={`row pp-row-${photoParagraphe.orientation}`}>
+          <Col lg={photoParagraphe.orientation === 'vertical' ? 10 : 6}>
+            {imgElement}
+          </Col>
+          <Col
+            lg={photoParagraphe.orientation === 'vertical' ? 10 : 6}
+            className="d-flex flex-column justify-content-center">
+            <ReactMarkdown>{photoParagraphe.paragraphe}</ReactMarkdown>
+          </Col>
+        </div>
+      </Fade>
     </Container>
   );
 };

@@ -1,13 +1,24 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
+import Fade from 'react-reveal/Fade';
 
 const Citation = ({ citation }) => {
+  const quotedCitation = `"${citation.citation}"`;
+
   return (
     <Container className="container-home">
       <div className="text-center">
-        <h2 className="citation">"{citation.citation}"</h2>
+        <h2 className="citation">
+          <Fade bottom>
+            <div>{quotedCitation}</div>
+          </Fade>
+        </h2>
         <p>
-          <strong>{citation.auteur}</strong>
+          <strong>
+            <Fade bottom>
+              <div>{citation.auteur}</div>
+            </Fade>
+          </strong>
         </p>
       </div>
     </Container>

@@ -9,6 +9,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ColorSpan from '../colorSpan';
 import ScrollCTA from '../scrollCTA';
+import Fade from 'react-reveal/Fade';
+import { Bounce, Slide, Zoom } from 'react-reveal';
 
 const MainSection = () => {
   return (
@@ -31,28 +33,35 @@ const MainSection = () => {
         render={(data) => (
           <Row className="home-section">
             <Col sm={6}>
-              <img
-                srcSet={
-                  data.strapiHomepage.intropicture.childImageSharp.fluid.srcSet
-                }
-                alt="Graphic design artwork"
-                className="img-resp"
-              />
+              <Fade top>
+                <img
+                  srcSet={
+                    data.strapiHomepage.intropicture.childImageSharp.fluid
+                      .srcSet
+                  }
+                  alt="Graphic design artwork"
+                  className="img-resp"
+                />
+              </Fade>
             </Col>
             <Col sm={6} style={{ display: 'flex' }}>
               <div className="center-vertically">
-                <h2 className="intro-text">
-                  {"Hi, I'm "}
-                  <ColorSpan text="Patrycja Beblo" highlightColor="yellow" />
-                  <br />
-                  {'I '}
-                  <ColorSpan text="design" highlightColor="orange" inverted />
-                  {', '}
-                  <ColorSpan text="travel" highlightColor="green" inverted />
-                  {' & '}
-                  <ColorSpan text="run" highlightColor="blue" inverted />.
-                </h2>
-                <ReactMarkdown>{data.strapiHomepage.introtext}</ReactMarkdown>
+                <Fade bottom>
+                  <h2 className="intro-text">
+                    {"Hi, I'm "}
+                    <ColorSpan text="Patrycja Beblo" highlightColor="yellow" />
+                    <br />
+                    {'I '}
+                    <ColorSpan text="design" highlightColor="orange" inverted />
+                    {', '}
+                    <ColorSpan text="travel" highlightColor="green" inverted />
+                    {' & '}
+                    <ColorSpan text="run" highlightColor="blue" inverted />
+                  </h2>
+                </Fade>
+                <Fade bottom>
+                  <ReactMarkdown>{data.strapiHomepage.introtext}</ReactMarkdown>
+                </Fade>
                 <ScrollCTA text="Scroll" target="#showcase" />
               </div>
             </Col>

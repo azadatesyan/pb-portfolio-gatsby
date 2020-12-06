@@ -42,19 +42,26 @@ const IndexPage = () => (
             }
           }
         `}
-        render={(data) =>
-          data.allStrapiProject.edges.map((project) => {
+        render={(data) => {
+          let odd = true;
+          return data.allStrapiProject.edges.map((project) => {
             let propsToPass = {
               title: project.node.nom,
               description: project.node.description,
               image: project.node.cover.childImageSharp.fluid.src,
               url: `projects/${project.node.lien_url}`,
-              tags: project.node.tags.split(',')
+              tags: project.node.tags.split(','),
+              fadeProps: {
+                left: odd,
+                right: !odd,
+                duration: 1500
+              }
             };
+            odd = !odd;
 
             return <Project data={propsToPass} />;
-          })
-        }
+          });
+        }}
       />
     </Container>
   </Layout>

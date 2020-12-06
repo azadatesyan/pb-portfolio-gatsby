@@ -15,6 +15,8 @@ import Problematique from '../components/Project-Page/problematique';
 import Retour from '../components/Project-Page/retour';
 import ImageSeule from '../components/Project-Page/imageSeule';
 
+import Fade from 'react-reveal/Fade';
+
 export const query = graphql`
   query ProjectQuery($link: String!) {
     strapiProject(lien_url: { eq: $link }) {
@@ -120,7 +122,9 @@ const ProjectPage = ({ data }) => {
             className="img-resp"
             srcSet={project.cover.childImageSharp.fluid.srcSet}
           />
-          <h1>{project.nom}</h1>
+          <h1>
+            <Fade top>{project.nom}</Fade>
+          </h1>
         </div>
       </Container>
 
@@ -134,9 +138,11 @@ const ProjectPage = ({ data }) => {
 
       <Container fluid className="container-home">
         <h2 className="project-title">Projet</h2>
-        <ReactMarkdown className="text-justify">
-          {project.introduction}
-        </ReactMarkdown>
+        <Fade bottom distance="150px">
+          <ReactMarkdown className="text-justify">
+            {project.introduction}
+          </ReactMarkdown>
+        </Fade>
       </Container>
 
       {/* Tous les autres éléments */}
