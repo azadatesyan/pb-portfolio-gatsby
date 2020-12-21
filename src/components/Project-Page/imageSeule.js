@@ -13,7 +13,13 @@ const ImageSeule = ({ imageSeule }) => {
         return <img className="img-resp" src={imageSeule.image.publicURL} />;
 
       case 'mp4':
-        return <video className="img-resp" src={imageSeule.image.publicURL} />;
+        return (
+          <video
+            controls
+            className="img-resp"
+            src={imageSeule.image.publicURL}
+          />
+        );
 
       default:
         return (
