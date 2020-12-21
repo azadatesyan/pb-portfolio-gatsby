@@ -45,6 +45,7 @@ export const query = graphql`
       paragraphe_texte {
         texte
         ordre
+        titre
       }
       cover {
         childImageSharp {
