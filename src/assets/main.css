@@ -502,6 +502,15 @@ h2.citation {
   transform: scale(1.05);
 }
 
+.img-scale-animate {
+  transition: transform 0.5s;
+  cursor: pointer;
+}
+
+.img-scale-animate:hover {
+  transform: scale(1.05);
+}
+
 .project-cover {
   position: relative;
   height: 90vh;

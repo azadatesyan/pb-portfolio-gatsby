@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import ReactMarkdown from 'react-markdown';
 import Fade from 'react-reveal/Fade';
-import Col from 'react-bootstrap/esm/Col';
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/esm/Row';
+import ImageModal from './imageModal';
 
 const ImageSeule = ({ imageSeule }) => {
+  const [modalShow, setModalShow] = useState(false);
+
   const imgElement = ((extension) => {
     switch (extension) {
       case 'gif':
-        return <img className="img-resp" src={imageSeule.image.publicURL} />;
+        return (
+          <img
+            onClick={() => setModalShow(true)}
+            className="img-resp img-scale-animate"
+            src={imageSeule.image.publicURL}
+          />
+        );
 
       case 'mp4':
         return (
@@ -24,7 +31,8 @@ const ImageSeule = ({ imageSeule }) => {
       default:
         return (
           <img
-            className="img-resp"
+            onClick={() => setModalShow(true)}
+            className="img-resp img-scale-animate"
             srcSet={imageSeule.image.childImageSharp.fluid.srcSet}
           />
         );
@@ -40,7 +48,15 @@ const ImageSeule = ({ imageSeule }) => {
       )}
       <Row className={`pp-row-vertical`}>
         <Fade left>
-          <div className="col-lg-10">{imgElement}</div>
+          <div className="col-lg-10">
+            {imgElement}
+            <ImageModal
+              title={imageSeule.titre || 'Image'}
+              show={modalShow}
+              onHide={() => setModalShow(false)}
+              imgsrc={imageSeule.image.publicURL}
+            />
+          </div>
         </Fade>
       </Row>
     </Container>

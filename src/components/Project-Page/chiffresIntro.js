@@ -9,7 +9,7 @@ const ChiffresIntro = ({ chiffres }) => {
       <div className="chiffres-container">
         {chiffres.map((chiffre) => {
           return (
-            <div>
+            <div key={chiffre.id}>
               <Fade bottom>
                 <CountUp
                   start={0}

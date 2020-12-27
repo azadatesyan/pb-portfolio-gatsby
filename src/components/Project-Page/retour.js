@@ -7,7 +7,9 @@ const Retour = ({ retour }) => {
   return (
     <Container className="container-home">
       <div className="text-center">
-        <h2 class="project-title">{retour.titre || 'Retours utilisateurs'}</h2>
+        <h2 className="project-title">
+          {retour.titre || 'Retours utilisateurs'}
+        </h2>
       </div>
       <Fade bottom>
         <div className="text-center p-3">

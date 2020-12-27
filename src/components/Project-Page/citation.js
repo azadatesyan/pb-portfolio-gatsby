@@ -10,16 +10,16 @@ const Citation = ({ citation }) => {
       <div className="text-center">
         <h2 className="citation">
           <Fade bottom>
-            <div>{quotedCitation}</div>
+            <p>{quotedCitation}</p>
           </Fade>
         </h2>
-        <p>
-          <strong>
+        <div>
+          <div>
             <Fade bottom>
-              <div>{citation.auteur}</div>
+              <strong>{citation.auteur}</strong>
             </Fade>
-          </strong>
-        </p>
+          </div>
+        </div>
       </div>
     </Container>
   );

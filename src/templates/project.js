@@ -21,15 +21,18 @@ export const query = graphql`
   query ProjectQuery($link: String!) {
     strapiProject(lien_url: { eq: $link }) {
       chiffres_intro {
+        id
         chiffre
         chiffre_description
       }
       citation_utilisateur {
+        id
         citation
         auteur
         ordre
       }
       image_seule {
+        id
         ordre
         titre
         image {
@@ -43,6 +46,7 @@ export const query = graphql`
         }
       }
       paragraphe_texte {
+        id
         texte
         ordre
         titre
@@ -63,6 +67,7 @@ export const query = graphql`
       }
       tags
       photo_paragraphe {
+        id
         ordre
         titre
         orientation
@@ -148,22 +153,22 @@ const ProjectPage = ({ data }) => {
 
       {/* Tous les autres éléments */}
 
-      {orderedElements.map((element) => {
+      {orderedElements.map((element, index) => {
         switch (element.type) {
           case 'photo_paragraphe':
-            return <PhotoParagraphe photoParagraphe={element} />;
+            return <PhotoParagraphe key={index} photoParagraphe={element} />;
 
           case 'citation_utilisateur':
-            return <Citation citation={element} />;
+            return <Citation key={index} citation={element} />;
 
           case 'paragraphe_texte':
-            return <Retour retour={element} />;
+            return <Retour key={index} retour={element} />;
 
           case 'problematique':
-            return <Problematique problematique={element} />;
+            return <Problematique key={index} problematique={element} />;
 
           case 'image_seule':
-            return <ImageSeule imageSeule={element} />;
+            return <ImageSeule key={index} imageSeule={element} />;
 
           default:
             break;
