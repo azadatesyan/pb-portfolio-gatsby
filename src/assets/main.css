@@ -11,7 +11,7 @@
 
 html {
   overflow: scroll;
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   padding: unset;
   overflow-x: hidden;
 }
@@ -282,6 +282,7 @@ h2.citation {
 .scroll-cta a {
   text-align: center;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .scroll-cta a span {

@@ -15,15 +15,7 @@ const ShowCase = () => {
             carouseltext
             carouseltitle
             homecarousel {
-              formats {
-                large {
-                  childImageSharp {
-                    fluid {
-                      srcSet
-                    }
-                  }
-                }
-              }
+              url
             }
           }
         }
@@ -45,13 +37,9 @@ const ShowCase = () => {
             <Col md={3}>
               <div className="thumbnail-right">
                 <div className="thumbnail-item">
-                  {data.strapiHomepage.homecarousel[0].formats.large
-                    .childImageSharp.fluid.srcSet ? (
+                  {data.strapiHomepage.homecarousel[0].url ? (
                     <img
-                      srcSet={
-                        data.strapiHomepage.homecarousel[0].formats.large
-                          .childImageSharp.fluid.srcSet
-                      }
+                      srcSet={data.strapiHomepage.homecarousel[0].url}
                       alt="graphic img"
                     />
                   ) : (
@@ -64,13 +52,9 @@ const ShowCase = () => {
                   )}
                 </div>
                 <div className="thumbnail-item">
-                  {data.strapiHomepage.homecarousel[1].formats.large
-                    .childImageSharp.fluid.srcSet ? (
+                  {data.strapiHomepage.homecarousel[1].url ? (
                     <img
-                      srcSet={
-                        data.strapiHomepage.homecarousel[1].formats.large
-                          .childImageSharp.fluid.srcSet
-                      }
+                      srcSet={data.strapiHomepage.homecarousel[1].url}
                       alt="graphic img"
                     />
                   ) : (
@@ -83,13 +67,9 @@ const ShowCase = () => {
                   )}
                 </div>
                 <div className="thumbnail-item">
-                  {data.strapiHomepage.homecarousel[2].formats.large
-                    .childImageSharp.fluid.srcSet ? (
+                  {data.strapiHomepage.homecarousel[2].url ? (
                     <img
-                      srcSet={
-                        data.strapiHomepage.homecarousel[2].formats.large
-                          .childImageSharp.fluid.srcSet
-                      }
+                      srcSet={data.strapiHomepage.homecarousel[2].url}
                       alt="graphic img"
                     />
                   ) : (
