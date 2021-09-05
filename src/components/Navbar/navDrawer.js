@@ -1,10 +1,16 @@
 import React from 'react';
 
-import { Link, StaticQuery, graphql } from 'gatsby';
+import { navigate, StaticQuery, graphql } from 'gatsby';
 
 import Container from 'react-bootstrap/Container';
 
-const NavDrawer = ({ open }) => {
+const NavDrawer = ({ open, setOpen }) => {
+
+  const handleRedirect = (e,path) => {
+    e.preventDefault();
+    setOpen(!open)
+    navigate('/'+path)
+  };
   return (
     <StaticQuery
       query={graphql`
@@ -37,7 +43,7 @@ const NavDrawer = ({ open }) => {
                 {data.allStrapiLink.edges.map((link) => {
                   return (
                     <li key={link.node.id}>
-                      <Link to={link.node.url_path}>{link.node.name}</Link>
+                      <a onClick={(e)=>handleRedirect(e,link.node.url_path)}>{link.node.name}</a>
                     </li>
                   );
                 })}

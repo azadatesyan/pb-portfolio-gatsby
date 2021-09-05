@@ -37,7 +37,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <Navbar open={menuOpen} setOpen={setMenuOpen} />
-      <NavDrawer open={menuOpen} />
+      <NavDrawer open={menuOpen} setOpen={setMenuOpen} />
       <main>{children}</main>
       <Footer />
     </>
